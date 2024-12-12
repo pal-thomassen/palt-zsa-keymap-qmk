@@ -128,19 +128,53 @@ void matrix_scan_user(void) {
   achordion_task();
 }
 
+#define HOME_F MT(MOD_LGUI, KC_F)
+#define LT_TAB LT(2,KC_TAB)
+#define SPC_LGUI MT(MOD_LGUI, KC_SPACE)
+#define ENTER_LT LT(3,KC_ENTER)
+
 bool achordion_chord(uint16_t tap_hold_keycode,
                      keyrecord_t* tap_hold_record,
                      uint16_t other_keycode,
                      keyrecord_t* other_record) {
   // Exceptionally consider the following chords as holds, even though they
   // are on the same hand in Dvorak.
-  switch (tap_hold_keycode) {
-    case MT(MOD_LGUI, KC_F): 
-      if (other_keycode == LT(2,KC_TAB)) { return true; }
+  switch (tap_hold_keycode)
+  {
+  case HOME_F: fikser cmd + tab
+      if (other_keycode == LT_TAB)
+      {
+          return true;
+      }
       break;
 
-    case KC_SPACE:   
-      if (other_keycode == KC_C || other_keycode == KC_V) { return true; }
+  case SPC_LGUI: // Fikser at CMD + C, V, T og W fungere som normalt
+      if (
+          other_keycode == KC_C ||
+          other_keycode == KC_V ||
+          other_keycode == KC_T ||
+          other_keycode == KC_W ||
+          other_keycode == KC_Q ||
+          other_keycode == KC_1 ||
+          other_keycode == KC_2 ||
+          other_keycode == KC_3 ||
+          other_keycode == KC_4 ||
+          other_keycode == KC_5 ||
+      )
+      {
+          return true;
+      }
+      break;
+
+  case ENTER_LT: // Fikser piltaster med vim bindings
+      if (
+          other_keycode == KC_H ||
+          other_keycode == KC_J ||
+          other_keycode == KC_K ||
+          other_keycode == KC_L)
+      {
+          return true;
+      }
       break;
   }
 
