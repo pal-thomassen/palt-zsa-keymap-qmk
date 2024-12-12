@@ -141,7 +141,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
   // are on the same hand in Dvorak.
   switch (tap_hold_keycode)
   {
-  case HOME_F: fikser cmd + tab
+  case HOME_F: // fikser cmd + tab
       if (other_keycode == LT_TAB)
       {
           return true;
