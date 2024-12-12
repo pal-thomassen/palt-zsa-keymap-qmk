@@ -135,8 +135,8 @@ bool achordion_chord(uint16_t tap_hold_keycode,
   // Exceptionally consider the following chords as holds, even though they
   // are on the same hand in Dvorak.
   switch (tap_hold_keycode) {
-    case KC_F: 
-      if (other_keycode == KC_TAB) { return true; }
+    case MT(MOD_LGUI, KC_F): 
+      if (other_keycode == LT(2,KC_TAB)) { return true; }
       break;
 
     case KC_SPACE:   
@@ -146,16 +146,6 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 
   // Otherwise, follow the opposite hands rule.
   return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
-bool achordion_eager_mod(uint8_t mod) {
-  switch (mod) {
-    case MOD_LCTL:
-      return true;  // Eager for Ctrl.
-
-    default:
-      return false;
-  }
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
