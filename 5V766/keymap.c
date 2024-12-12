@@ -129,6 +129,9 @@ void matrix_scan_user(void) {
 }
 
 #define HOME_F MT(MOD_LGUI, KC_F)
+#define HOME_A MT(MOD_LSFT, KC_A)
+#define HOME_S MT(MOD_LCTL, KC_S)
+#define HOME_D MT(MOD_LALT, KC_D)
 #define LT_TAB LT(2,KC_TAB)
 #define SPC_LGUI MT(MOD_LGUI, KC_SPACE)
 #define ENTER_LT LT(3,KC_ENTER)
@@ -155,10 +158,10 @@ bool achordion_chord(uint16_t tap_hold_keycode,
           other_keycode == KC_T ||
           other_keycode == KC_W ||
           other_keycode == KC_Q ||
-          other_keycode == KC_A ||
+          other_keycode == HOME_A ||
           other_keycode == KC_Z ||
           other_keycode == KC_X ||
-          other_keycode == KC_S ||
+          other_keycode == HOME_S ||
           other_keycode == KC_1 ||
           other_keycode == KC_2 ||
           other_keycode == KC_3 ||
