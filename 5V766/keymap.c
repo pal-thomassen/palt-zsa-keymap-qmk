@@ -159,8 +159,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
           other_keycode == KC_2 ||
           other_keycode == KC_3 ||
           other_keycode == KC_4 ||
-          other_keycode == KC_5 ||
-      )
+          other_keycode == KC_5)
       {
           return true;
       }
