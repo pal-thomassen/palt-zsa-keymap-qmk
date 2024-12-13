@@ -132,6 +132,9 @@ void matrix_scan_user(void) {
 #define HOME_A MT(MOD_LSFT, KC_A)
 #define HOME_S MT(MOD_LCTL, KC_S)
 #define HOME_D MT(MOD_LALT, KC_D)
+#define HOME_J MT(MOD_RGUI, KC_J)
+#define HOME_K MT(MOD_RALT, KC_K)
+#define HOME_L MT(MOD_RCTL, KC_L)
 #define LT_TAB LT(2,KC_TAB)
 #define SPC_LGUI MT(MOD_LGUI, KC_SPACE)
 #define ENTER_LT LT(3,KC_ENTER)
@@ -179,9 +182,9 @@ bool achordion_chord(uint16_t tap_hold_keycode,
   case ENTER_LT: // Fikser piltaster med vim bindings
       if (
           other_keycode == KC_H ||
-          other_keycode == KC_J ||
-          other_keycode == KC_K ||
-          other_keycode == KC_L)
+          other_keycode == HOME_J ||
+          other_keycode == HOME_K ||
+          other_keycode == HOME_L)
       {
           return true;
       }
