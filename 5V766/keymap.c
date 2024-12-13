@@ -145,7 +145,9 @@ bool achordion_chord(uint16_t tap_hold_keycode,
   switch (tap_hold_keycode)
   {
   case HOME_F: // fikser cmd + tab
-      if (other_keycode == LT_TAB)
+      if (
+          other_keycode == LT_TAB ||
+          other_keycode == SPC_LGUI)
       {
           return true;
       }
