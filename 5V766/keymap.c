@@ -156,6 +156,13 @@ bool achordion_chord(uint16_t tap_hold_keycode,
       }
       break;
 
+  case HOME_S:
+      if (other_keycode == LT_TAB)
+      {
+          return true;
+      }
+      break;
+
   case SPC_LGUI: // Fikser at CMD + C, V, T og W fungere som normalt
       if (
           other_keycode == KC_C ||
