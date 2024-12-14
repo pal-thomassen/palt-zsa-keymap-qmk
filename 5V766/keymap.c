@@ -163,43 +163,22 @@ bool achordion_chord(uint16_t tap_hold_keycode,
       }
       break;
 
-  case SPC_LGUI: // Fikser at CMD + C, V, T og W fungere som normalt
-      if (
-          other_keycode == KC_C ||
-          other_keycode == KC_V ||
-          other_keycode == KC_T ||
-          other_keycode == KC_W ||
-          other_keycode == KC_Q ||
-          other_keycode == HOME_A ||
-          other_keycode == HOME_F ||
-          other_keycode == KC_R ||
-          other_keycode == KC_Z ||
-          other_keycode == KC_X ||
-          other_keycode == HOME_S ||
-          other_keycode == KC_1 ||
-          other_keycode == KC_2 ||
-          other_keycode == KC_3 ||
-          other_keycode == KC_4 ||
-          other_keycode == KC_5)
-      {
-          return true;
-      }
-      break;
-
-  case ENTER_LT: // Fikser piltaster med vim bindings
-      if (
-          other_keycode == KC_H ||
-          other_keycode == HOME_J ||
-          other_keycode == HOME_K ||
-          other_keycode == HOME_L)
-      {
-          return true;
-      }
-      break;
-  }
+  // Fikser slik at achordion kun fungerer med alpha-keys
+  if (other_keycode > KC_Z) { return true; }
 
   // Otherwise, follow the opposite hands rule.
   return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
+bool achordion_eager_mod(uint8_t mod) {
+  switch (mod) {
+    case MOD_LGUI:
+    case MOD_RGUI:
+      return true;  // Eagerly apply cmd mods.
+
+    default:
+      return false;
+  }
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
