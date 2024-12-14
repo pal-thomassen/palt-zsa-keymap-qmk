@@ -162,6 +162,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
           return true;
       }
       break;
+  }
 
   // Fikser slik at achordion kun fungerer med alpha-keys
   if (other_keycode > KC_Z) { return true; }
