@@ -28,6 +28,7 @@
 #define NRW_PIPE KC_GRV
 #define NRW_COLN S(KC_DOT)
 #define NRW_QUES S(KC_MINS)
+#define NRW_TILD ALGR(KC_RBRC)
 #define NRW_DLR ALGR(KC_4)
 #define NRW_LCBR ALGR(KC_7)
 #define NRW_RCBR ALGR(KC_0)
