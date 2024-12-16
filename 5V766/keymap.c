@@ -138,6 +138,7 @@ void matrix_scan_user(void) {
 #define LT_TAB LT(2,KC_TAB)
 #define SPC_LGUI MT(MOD_LGUI, KC_SPACE)
 #define ENTER_LT LT(3,KC_ENTER)
+#define BKSPC_TD TD(DANCE_2)
 
 bool achordion_chord(uint16_t tap_hold_keycode,
                      keyrecord_t* tap_hold_record,
@@ -148,24 +149,27 @@ bool achordion_chord(uint16_t tap_hold_keycode,
   switch (tap_hold_keycode)
   {
   case HOME_F: // fikser cmd + tab
-      if (
-          other_keycode == LT_TAB ||
-          other_keycode == SPC_LGUI)
-      {
-          return true;
-      }
-      break;
+    if (
+        other_keycode == LT_TAB ||
+        other_keycode == SPC_LGUI)
+    {
+      return true;
+    }
+    break;
 
   case HOME_S:
-      if (other_keycode == LT_TAB)
-      {
-          return true;
-      }
-      break;
-  }
+    if (other_keycode == LT_TAB)
+    {
+      return true;
+    }
+    break;
 
-  // Fikser slik at achordion kun fungerer med alpha-keys
-  if (other_keycode > KC_Z) { return true; }
+  case SPC_LGUI:
+  case ENTER_LT:
+  case LT_TAB:
+  case BKSPC_TD:
+      return true;
+  }
 
   // Otherwise, follow the opposite hands rule.
   return achordion_opposite_hands(tap_hold_record, other_record);
