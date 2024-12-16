@@ -10,6 +10,7 @@ enum custom_keycodes {
   HSV_0_255_255,
   HSV_74_255_255,
   HSV_169_255_255,
+  ST_MACRO_0,
 };
 
 
@@ -45,8 +46,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,       
     CW_TOGG,        KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           NRW_ARNG,       
     KC_LEFT_SHIFT,  MT(MOD_LSFT, KC_A),MT(MOD_LCTL, KC_S),MT(MOD_LALT, KC_D),MT(MOD_LGUI, KC_F),KC_G,                                           KC_H,           MT(MOD_RGUI, KC_J),MT(MOD_RALT, KC_K),MT(MOD_RCTL, KC_L),MT(MOD_RSFT, NRW_OSTR),MT(MOD_RSFT, NRW_AE),
-    TD(DANCE_0),    MT(MOD_LALT, KC_Z),KC_X,           KC_C,           KC_V,           LT(5,KC_B),                                     LT(5,KC_N),     KC_M,           KC_COMMA,       KC_DOT,         MT(MOD_RALT, KC_SLASH),TD(DANCE_1),    
-                                                    MT(MOD_LGUI, KC_SPACE),LT(2,KC_TAB),                                   LT(3,KC_ENTER), TD(DANCE_2)
+    TD(DANCE_0),    MT(MOD_LALT, KC_Z),KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         MT(MOD_RALT, KC_SLASH),TD(DANCE_1),    
+                                                    MT(MOD_LGUI, KC_SPACE),LT(5,KC_TAB),                                   LT(3,KC_ENTER), TD(DANCE_2)
   ),
   [1] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TD(DANCE_3),    
@@ -77,10 +78,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_TRANSPARENT, TD(DANCE_10),                                   KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [5] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, NRW_QUOT,       NRW_LABK,       NRW_RABK,       NRW_DQUO,       NRW_GRV,                                        NRW_AMPR,       NRW_RABK,       NRW_LBRC,       NRW_RBRC,       NRW_PERC,       KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         
+    KC_TRANSPARENT, NRW_QUOT,       NRW_LABK,       NRW_RABK,       NRW_DQUO,       NRW_GRV,                                        NRW_AMPR,       NRW_RABK,       NRW_LBRC,       NRW_RBRC,       NRW_PERC,       KC_F12,         
     KC_TRANSPARENT, TD(DANCE_11),   MT(MOD_LCTL, KC_KP_MINUS),MT(MOD_LALT, KC_KP_PLUS),TD(DANCE_12),   NRW_HASH,                                       NRW_PIPE,       TD(DANCE_13),   TD(DANCE_14),   TD(DANCE_15),   TD(DANCE_16),   KC_TRANSPARENT, 
-    KC_TRANSPARENT, NRW_CIRC,       KC_KP_SLASH,    KC_KP_ASTERISK, NRW_BSLS,       KC_TRANSPARENT,                                 KC_TRANSPARENT, NRW_DLR,        NRW_LCBR,       NRW_RCBR,       NRW_AT,         KC_TRANSPARENT, 
+    KC_TRANSPARENT, NRW_CIRC,       KC_KP_SLASH,    KC_KP_ASTERISK, NRW_BSLS,       ST_MACRO_0,                                     NRW_TILD,       NRW_DLR,        NRW_LCBR,       NRW_RCBR,       NRW_AT,         KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
@@ -203,6 +204,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (!process_achordion(keycode, record)) { return false; }
 
   switch (keycode) {
+    case ST_MACRO_0:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_DOT) SS_DELAY(100) SS_TAP(X_DOT) SS_DELAY(100) SS_TAP(X_SLASH));
+    }
+    break;
 
     case TD(DANCE_4):
     case TD(DANCE_5):
