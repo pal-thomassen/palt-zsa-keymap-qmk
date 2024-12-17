@@ -79,9 +79,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [5] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         
-    KC_TRANSPARENT, NRW_QUOT,       NRW_LABK,       NRW_RABK,       NRW_DQUO,       NRW_GRV,                                        NRW_AMPR,       NRW_RABK,       NRW_LBRC,       NRW_RBRC,       NRW_PERC,       KC_F12,         
-    KC_TRANSPARENT, TD(DANCE_11),   MT(MOD_LCTL, KC_KP_MINUS),MT(MOD_LALT, KC_KP_PLUS),TD(DANCE_12),   NRW_HASH,                                       NRW_PIPE,       TD(DANCE_13),   TD(DANCE_14),   TD(DANCE_15),   TD(DANCE_16),   KC_TRANSPARENT, 
-    KC_TRANSPARENT, NRW_CIRC,       KC_KP_SLASH,    KC_KP_ASTERISK, NRW_BSLS,       ST_MACRO_0,                                     NRW_TILD,       NRW_DLR,        NRW_LCBR,       NRW_RCBR,       NRW_AT,         KC_TRANSPARENT, 
+    KC_TRANSPARENT, NRW_APOS_MAC,   NRW_LESS_MAC,   NRW_GRTR_MAC,   NRW_DQUO,       NRW_GRV_MAC,                                    NRW_AMPR,       NRW_GRTR_MAC,   NRW_LBRC,       NRW_RBRC,       NRW_PERC,       KC_F12,         
+    KC_TRANSPARENT, TD(DANCE_11),   MT(MOD_LCTL, KC_KP_MINUS),MT(MOD_LALT, KC_KP_PLUS),TD(DANCE_12),   NRW_HASH,                                       NRW_PIPE_MAC,   TD(DANCE_13),   TD(DANCE_14),   TD(DANCE_15),   TD(DANCE_16),   KC_TRANSPARENT, 
+    KC_TRANSPARENT, NRW_CIRC,       KC_KP_SLASH,    KC_KP_ASTERISK, NRW_BSLS,       ST_MACRO_0,                                     NRW_TILD,       NRW_DLR_MAC,    NRW_LCBR_MAC,   NRW_RCBR_MAC,   NRW_AT_MAC,     KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
