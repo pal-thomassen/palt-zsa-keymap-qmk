@@ -141,11 +141,11 @@ void matrix_scan_user(void) {
 #define HOME_K MT(MOD_RALT, KC_K)
 #define HOME_L MT(MOD_RCTL, KC_L)
 #define LINUX_HOME_L MT(MOD_RGUI, KC_L)
-#define LT_TAB LT(5,KC_TAB)
+#define LT_TAB LT(4,KC_TAB)
 #define SPC_LGUI MT(MOD_LGUI, KC_SPACE)
 #define LINUX_SPC_LCTL MT(MOD_LCTL, KC_SPACE)
-#define ENTER_LT LT(3,KC_ENTER)
-#define BKSPC_TD TD(DANCE_2)
+#define ENTER_LT LT(2,KC_ENTER)
+#define BKSPC_TD KC_BSPC
 
 bool achordion_chord(uint16_t tap_hold_keycode,
                      keyrecord_t* tap_hold_record,
