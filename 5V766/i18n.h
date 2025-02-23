@@ -4,12 +4,12 @@
 #define NRW_APOS_MAC KC_NUBS
 #define NRW_LESS_MAC KC_GRV
 #define NRW_GRTR_MAC S(KC_GRV)
+#define NRW_DQUO S(KC_2)
 #define NRW_GRV_MAC ALGR(KC_EQL)
 #define NRW_EXLM S(KC_1)
 #define NRW_EQL S(KC_0)
 #define NRW_HASH S(KC_3)
 #define NRW_CIRC S(KC_RBRC)
-#define NRW_BSLS KC_EQL
 #define NRW_AMPR S(KC_6)
 #define NRW_LBRC ALGR(KC_8)
 #define NRW_RBRC ALGR(KC_9)
