@@ -125,10 +125,6 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-void matrix_scan_user(void) {
-  achordion_task();
-}
-
 #define HOME_F MT(MOD_LGUI, KC_F)
 #define LINUX_HOME_F MT(MOD_LCTL, KC_F)
 #define HOME_A MT(MOD_LSFT, KC_A)
