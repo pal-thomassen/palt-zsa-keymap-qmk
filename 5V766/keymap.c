@@ -1,7 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 #include "i18n.h"
-#include "features/achordion.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
@@ -147,12 +146,10 @@ void matrix_scan_user(void) {
 #define ENTER_LT LT(2,KC_ENTER)
 #define BKSPC_TD KC_BSPC
 
-bool achordion_chord(uint16_t tap_hold_keycode,
-                     keyrecord_t* tap_hold_record,
-                     uint16_t other_keycode,
-                     keyrecord_t* other_record) {
-  // Exceptionally consider the following chords as holds, even though they
-  // are on the same hand in Dvorak.
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record,
+                      uint16_t other_keycode, keyrecord_t *other_record)
+{
+  // Exceptionally allow some one-handed chords for hotkeys.
   switch (tap_hold_keycode)
   {
   case HOME_F: // fikser cmd + tab
@@ -180,25 +177,11 @@ bool achordion_chord(uint16_t tap_hold_keycode,
   case BKSPC_TD:
       return true;
   }
-
-  // Otherwise, follow the opposite hands rule.
-  return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
-bool achordion_eager_mod(uint8_t mod) {
-  switch (mod) {
-    case MOD_LGUI:
-    case MOD_RGUI:
-      return true;  // Eagerly apply cmd mods.
-
-    default:
-      return false;
-  }
+  // Otherwise defer to the opposite hands rule.
+  return get_chordal_hold_default(tap_hold_record, other_record);
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!process_achordion(keycode, record)) { return false; }
-
   switch (keycode) {
     case ST_MACRO_0:
     if (record->event.pressed) {
