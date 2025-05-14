@@ -24,3 +24,9 @@
 #define NRW_LCBR_MAC S(ALGR(KC_8))
 #define NRW_RCBR_MAC S(ALGR(KC_9))
 #define NRW_AT_MAC KC_NUHS
+#define NRW_MINS KC_SLSH
+#define NRW_PLUS KC_MINS
+#define NRW_BSLS KC_EQL
+#define NRW_ASTR S(KC_NUHS)
+#define NRW_SLSH S(KC_7)
+#define NRW_SCLN S(KC_COMM)
