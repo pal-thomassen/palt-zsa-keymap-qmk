@@ -26,7 +26,6 @@
 #define NRW_AT_MAC KC_NUHS
 #define NRW_MINS KC_SLSH
 #define NRW_PLUS KC_MINS
-#define NRW_BSLS KC_EQL
 #define NRW_ASTR S(KC_NUHS)
 #define NRW_SLSH S(KC_7)
 #define NRW_SCLN S(KC_COMM)
