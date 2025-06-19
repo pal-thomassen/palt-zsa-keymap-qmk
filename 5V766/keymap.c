@@ -21,13 +21,13 @@ enum tap_dance_codes {
   DANCE_2,
 };
 
-#define DUAL_FUNC_0 LT(18, KC_Z)
-#define DUAL_FUNC_1 LT(17, KC_K)
-#define DUAL_FUNC_2 LT(30, KC_7)
-#define DUAL_FUNC_3 LT(29, KC_U)
-#define DUAL_FUNC_4 LT(21, KC_1)
-#define DUAL_FUNC_5 LT(32, KC_F8)
-#define DUAL_FUNC_6 LT(18, KC_T)
+#define DUAL_FUNC_0 LT(4, KC_7)
+#define DUAL_FUNC_1 LT(12, KC_F1)
+#define DUAL_FUNC_2 LT(12, KC_J)
+#define DUAL_FUNC_3 LT(11, KC_F23)
+#define DUAL_FUNC_4 LT(1, KC_B)
+#define DUAL_FUNC_5 LT(3, KC_3)
+#define DUAL_FUNC_6 LT(5, KC_F9)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, NRW_APOS_MAC,   NRW_LESS_MAC,   NRW_GRTR_MAC,   NRW_DQUO,       NRW_GRV_MAC,                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, NRW_EXLM,       NRW_MINS,       NRW_PLUS,       NRW_EQL,        NRW_HASH,                                       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, NRW_CIRC,       NRW_BSLS,       NRW_ASTR,       NRW_SLSH,       NRW_CIRC,                                       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, NRW_CIRC,       KC_BSLS,        NRW_ASTR,       NRW_SLSH,       NRW_CIRC,                                       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [7] = LAYOUT_voyager(
@@ -88,10 +88,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
+  'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
+  'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
+  'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
+  'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
+  'L', 'L', 'R', 'R'
+);
+
 const uint16_t PROGMEM combo0[] = { MT(MOD_RGUI, KC_J), MT(MOD_RALT, KC_K), COMBO_END};
+const uint16_t PROGMEM combo1[] = { KC_Z, KC_X, COMBO_END};
+const uint16_t PROGMEM combo2[] = { KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo3[] = { KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM combo4[] = { LT(6, KC_U), KC_I, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_ESCAPE),
+    COMBO(combo1, LGUI(KC_X)),
+    COMBO(combo2, LGUI(KC_C)),
+    COMBO(combo3, LGUI(KC_V)),
+    COMBO(combo4, KC_ENTER),
 };
 
 
