@@ -2,10 +2,12 @@
 #include "version.h"
 #include "i18n.h"
 #define MOON_LED_LEVEL LED_LEVEL
-#define ML_SAFE_RANGE SAFE_RANGE
+#ifndef ZSA_SAFE_RANGE
+#define ZSA_SAFE_RANGE SAFE_RANGE
+#endif
 
 enum custom_keycodes {
-  RGB_SLD = ML_SAFE_RANGE,
+  RGB_SLD = ZSA_SAFE_RANGE,
   HSV_0_255_255,
   HSV_74_255_255,
   HSV_169_255_255,
@@ -21,12 +23,12 @@ enum tap_dance_codes {
   DANCE_2,
 };
 
-#define DUAL_FUNC_0 LT(3, KC_A)
-#define DUAL_FUNC_1 LT(15, KC_F24)
-#define DUAL_FUNC_2 LT(4, KC_Y)
-#define DUAL_FUNC_3 LT(15, KC_F5)
-#define DUAL_FUNC_4 LT(4, KC_F23)
-#define DUAL_FUNC_5 LT(12, KC_P)
+#define DUAL_FUNC_0 LT(3, KC_F7)
+#define DUAL_FUNC_1 LT(2, KC_F18)
+#define DUAL_FUNC_2 LT(4, KC_N)
+#define DUAL_FUNC_3 LT(14, KC_1)
+#define DUAL_FUNC_4 LT(1, KC_F)
+#define DUAL_FUNC_5 LT(3, KC_0)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -95,7 +97,7 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
   'L', 'L', 'R', 'R'
 );
 
-const uint16_t PROGMEM combo0[] = { MT(MOD_RGUI, KC_J), MT(MOD_RALT, KC_K), COMBO_END};
+const uint16_t PROGMEM combo0[] = { MT(MOD_RGUI, KC_J), MT(MOD_RALT, KC_K), MT(MOD_RCTL, KC_L), COMBO_END};
 const uint16_t PROGMEM combo1[] = { KC_Z, KC_X, COMBO_END};
 const uint16_t PROGMEM combo2[] = { KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM combo3[] = { KC_C, KC_V, COMBO_END};
