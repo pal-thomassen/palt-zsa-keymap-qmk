@@ -1,7 +1,7 @@
 #define NRW_ARNG KC_LBRC
 #define NRW_OSTR KC_SCLN
 #define NRW_AE KC_QUOT
-#define NRW_QUOT KC_NUHS
+#define NRW_APOS_MAC KC_NUBS
 #define NRW_LABK KC_NUBS
 #define NRW_RABK S(KC_NUBS)
 #define NRW_DQUO S(KC_2)
