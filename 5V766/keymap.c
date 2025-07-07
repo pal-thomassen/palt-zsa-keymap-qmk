@@ -23,12 +23,12 @@ enum tap_dance_codes {
   DANCE_2,
 };
 
-#define DUAL_FUNC_0 LT(3, KC_F7)
-#define DUAL_FUNC_1 LT(2, KC_F18)
-#define DUAL_FUNC_2 LT(4, KC_N)
-#define DUAL_FUNC_3 LT(14, KC_1)
-#define DUAL_FUNC_4 LT(1, KC_F)
-#define DUAL_FUNC_5 LT(3, KC_0)
+#define DUAL_FUNC_0 LT(6, KC_F17)
+#define DUAL_FUNC_1 LT(9, KC_F3)
+#define DUAL_FUNC_2 LT(12, KC_F16)
+#define DUAL_FUNC_3 LT(8, KC_F20)
+#define DUAL_FUNC_4 LT(8, KC_8)
+#define DUAL_FUNC_5 LT(15, KC_9)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [4] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         
-    KC_TRANSPARENT, NRW_APOS_MAC,   NRW_LESS_MAC,   NRW_GRTR_MAC,   NRW_DQUO,       NRW_GRV_MAC,                                    NRW_AMPR,       KC_KP_SLASH,    NRW_LBRC,       NRW_RBRC,       NRW_PERC,       KC_F12,         
+    KC_TRANSPARENT, NRW_APOS_MAC,   NRW_LABK,       NRW_RABK,       NRW_DQUO,       NRW_GRV_MAC,                                    NRW_AMPR,       KC_KP_SLASH,    NRW_LBRC,       NRW_RBRC,       NRW_PERC,       KC_F12,         
     KC_TRANSPARENT, DUAL_FUNC_0,    MT(MOD_LCTL, KC_KP_MINUS),MT(MOD_LALT, KC_KP_PLUS),DUAL_FUNC_1,    NRW_HASH,                                       NRW_PIPE_MAC,   DUAL_FUNC_2,    DUAL_FUNC_3,    DUAL_FUNC_4,    DUAL_FUNC_5,    KC_TRANSPARENT, 
     KC_TRANSPARENT, NRW_CIRC,       KC_BSLS,        KC_KP_ASTERISK, KC_KP_SLASH,    ST_MACRO_1,                                     NRW_TILD,       NRW_DLR_MAC,    NRW_LCBR_MAC,   NRW_RCBR_MAC,   NRW_AT_MAC,     KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
