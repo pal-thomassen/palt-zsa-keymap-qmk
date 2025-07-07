@@ -13,6 +13,7 @@ enum custom_keycodes {
   HSV_169_255_255,
   ST_MACRO_0,
   ST_MACRO_1,
+  ST_MACRO_2,
 };
 
 
@@ -23,12 +24,12 @@ enum tap_dance_codes {
   DANCE_2,
 };
 
-#define DUAL_FUNC_0 LT(2, KC_F12)
-#define DUAL_FUNC_1 LT(5, KC_P)
-#define DUAL_FUNC_2 LT(5, KC_J)
-#define DUAL_FUNC_3 LT(9, KC_Y)
-#define DUAL_FUNC_4 LT(10, KC_Y)
-#define DUAL_FUNC_5 LT(15, KC_5)
+#define DUAL_FUNC_0 LT(12, KC_A)
+#define DUAL_FUNC_1 LT(7, KC_2)
+#define DUAL_FUNC_2 LT(11, KC_Q)
+#define DUAL_FUNC_3 LT(10, KC_F)
+#define DUAL_FUNC_4 LT(13, KC_O)
+#define DUAL_FUNC_5 LT(5, KC_F19)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -61,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [4] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         
-    KC_TRANSPARENT, NRW_APOS_MAC,   NRW_LABK,       NRW_RABK,       NRW_DQUO,       NRW_GRV_MAC,                                    NRW_AMPR,       KC_KP_SLASH,    NRW_LBRC,       NRW_RBRC,       NRW_PERC,       KC_F12,         
+    KC_TRANSPARENT, NRW_QUOT,       NRW_LABK,       NRW_RABK,       NRW_DQUO,       NRW_GRV_MAC,                                    NRW_AMPR,       KC_KP_SLASH,    NRW_LBRC,       NRW_RBRC,       NRW_PERC,       KC_F12,         
     KC_TRANSPARENT, DUAL_FUNC_0,    MT(MOD_LCTL, KC_KP_MINUS),MT(MOD_LALT, KC_KP_PLUS),DUAL_FUNC_1,    NRW_HASH,                                       NRW_PIPE_MAC,   DUAL_FUNC_2,    DUAL_FUNC_3,    DUAL_FUNC_4,    DUAL_FUNC_5,    KC_TRANSPARENT, 
     KC_TRANSPARENT, NRW_CIRC,       KC_BSLS,        KC_KP_ASTERISK, KC_KP_SLASH,    ST_MACRO_1,                                     NRW_TILD,       NRW_DLR_MAC,    NRW_LCBR_MAC,   NRW_RCBR_MAC,   NRW_AT_MAC,     KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
@@ -75,9 +76,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [6] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, NRW_APOS_MAC,   NRW_LABK,       NRW_RABK,       NRW_DQUO,       NRW_GRV_MAC,                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, NRW_QUOT,       NRW_LABK,       NRW_RABK,       NRW_DQUO,       NRW_GRV_MAC,                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, NRW_EXLM,       NRW_MINS,       NRW_PLUS,       NRW_EQL,        NRW_HASH,                                       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, NRW_CIRC,       KC_BSLS,        NRW_ASTR,       NRW_SLSH,       NRW_CIRC,                                       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, NRW_CIRC,       KC_BSLS,        NRW_ASTR,       NRW_SLSH,       ST_MACRO_2,                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [7] = LAYOUT_voyager(
@@ -223,7 +224,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_1:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_DOT) SS_DELAY(100) SS_TAP(X_DOT) SS_DELAY(100) SS_TAP(X_KP_SLASH));
+      SEND_STRING(SS_TAP(X_DOT)SS_DELAY(1)  SS_TAP(X_DOT)SS_DELAY(1)  SS_TAP(X_KP_SLASH));
+    }
+    break;
+    case ST_MACRO_2:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_KP_DOT)SS_DELAY(1)  SS_TAP(X_KP_DOT)SS_DELAY(1)  SS_TAP(X_KP_SLASH)  SS_DELAY(1) SS_TAP(X_ENTER));
     }
     break;
 
