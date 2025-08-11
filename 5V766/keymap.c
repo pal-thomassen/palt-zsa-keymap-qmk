@@ -24,12 +24,12 @@ enum tap_dance_codes {
   DANCE_2,
 };
 
-#define DUAL_FUNC_0 LT(1, KC_W)
-#define DUAL_FUNC_1 LT(1, KC_U)
-#define DUAL_FUNC_2 LT(11, KC_F12)
-#define DUAL_FUNC_3 LT(14, KC_A)
-#define DUAL_FUNC_4 LT(7, KC_2)
-#define DUAL_FUNC_5 LT(13, KC_D)
+#define DUAL_FUNC_0 LT(5, KC_F13)
+#define DUAL_FUNC_1 LT(5, KC_F)
+#define DUAL_FUNC_2 LT(13, KC_F15)
+#define DUAL_FUNC_3 LT(5, KC_F21)
+#define DUAL_FUNC_4 LT(15, KC_F2)
+#define DUAL_FUNC_5 LT(10, KC_F3)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -95,7 +95,7 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
-  'L', 'L', 'R', 'R'
+  '*', '*', '*', '*'
 );
 
 const uint16_t PROGMEM combo0[] = { MT(MOD_RGUI, KC_J), MT(MOD_RALT, KC_K), MT(MOD_RCTL, KC_L), COMBO_END};
@@ -113,7 +113,14 @@ combo_t key_combos[COMBO_COUNT] = {
 };
 
 
+
 extern rgb_config_t rgb_matrix_config;
+
+RGB hsv_to_rgb_with_value(HSV hsv) {
+  RGB rgb = hsv_to_rgb( hsv );
+  float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
+  return (RGB){ f * rgb.r, f * rgb.g, f * rgb.b };
+}
 
 void keyboard_post_init_user(void) {
   rgb_matrix_enable();
@@ -136,9 +143,8 @@ void set_layer_color(int layer) {
     if (!hsv.h && !hsv.s && !hsv.v) {
         rgb_matrix_set_color( i, 0, 0, 0 );
     } else {
-        RGB rgb = hsv_to_rgb( hsv );
-        float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
-        rgb_matrix_set_color( i, f * rgb.r, f * rgb.g, f * rgb.b );
+        RGB rgb = hsv_to_rgb_with_value(hsv);
+        rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
     }
   }
 }
@@ -147,7 +153,7 @@ bool rgb_matrix_indicators_user(void) {
   if (rawhid_state.rgb_control) {
       return false;
   }
-  if (keyboard_config.disable_layer_led) { return false; }
+    if (keyboard_config.disable_layer_led) { return false; }
   switch (biton32(layer_state)) {
     case 3:
       set_layer_color(3);
@@ -156,10 +162,11 @@ bool rgb_matrix_indicators_user(void) {
       set_layer_color(5);
       break;
    default:
-    if (rgb_matrix_get_flags() == LED_FLAG_NONE)
-      rgb_matrix_set_color_all(0, 0, 0);
-    break;
+      if (rgb_matrix_get_flags() == LED_FLAG_NONE) {
+        rgb_matrix_set_color_all(0, 0, 0);
+      }
   }
+
   return true;
 }
 
