@@ -2,8 +2,8 @@
 #define NRW_OSTR KC_SCLN
 #define NRW_AE KC_QUOT
 #define NRW_APOS_MAC KC_NUBS
-#define NRW_LABK KC_NUBS
-#define NRW_RABK S(KC_NUBS)
+#define NRW_LESS_MAC KC_GRV
+#define NRW_GRTR_MAC S(KC_GRV)
 #define NRW_DQUO S(KC_2)
 #define NRW_GRV_MAC ALGR(KC_EQL)
 #define NRW_EXLM S(KC_1)
